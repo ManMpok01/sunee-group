@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SERVICES</title>
+</head>
+<body>
+    <section class="section-1">
+        <!-- contenu de la section 1 -->
+      </section>
+      
+      <section class="section-2">
+        <!-- contenu de la section 2 -->
+      </section>
+      
+      <div class="transition-overlay"></div>
+</body>
+.section-1 {
+    height: 100vh;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .section-2 {
+    height: 100vh;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(100%);
+  }
+  
+  .transition-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    transform: translateY(100%);
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .transition-overlay.active {
+    transform: translateY(0);
+  }
+</html>
+const section1 = document.querySelector('.section-1');
+const section2 = document.querySelector('.section-2');
+const transitionOverlay = document.querySelector('.transition-overlay');
+
+window.addEventListener('scroll', () => {
+  const scrollPosition = window.scrollY;
+  const section1Height = section1.offsetHeight;
+
+  if (scrollPosition > section1Height / 2) {
+    transitionOverlay.classList.add('active');
+    section2.style.transform = 'translateY(0)';
+  } else {
+    transitionOverlay.classList.remove('active');
+    section2.style.transform = 'translateY(100%)';
+  }
+});
